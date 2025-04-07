@@ -1,4 +1,4 @@
-public class Servico {
+public class Servico implements Cobravel {
     private String nome;
     private double preco;
     private boolean porPessoa;
@@ -34,9 +34,13 @@ public class Servico {
     }
 
     @Override
+    public double calcularValor() {
+        return preco;
+    }
+
+    @Override
     public String toString() {
         return nome + " (R$ " + String.format("%.2f", preco) +
                 (porPessoa ? " por pessoa" : " fixo") + ")";
     }
-
 }
