@@ -1,6 +1,13 @@
 import java.util.ArrayList;
 import java.util.List;
 
+//  * Classe Fatura - Demonstra:
+//  * 1. COMPOSIÇÃO: Agrega múltiplos itens cobráveis
+//  * 2. POLIMORFISMO: Trata diferentes tipos de Cobravel de forma homogênea
+//  * 3. PRINCÍPIO ABERTO-FECHADO: Aberta para extensão (novos tipos Cobravel) sem modificação
+//  * 4. USO DE COLEÇÕES: Lista para armazenar múltiplos itens
+//  * 5. RESPONSABILIDADE ÚNICA: Focada apenas em gerar uma fatura
+
 public class Fatura {
     private List<Cobravel> itens;
     private String titular;

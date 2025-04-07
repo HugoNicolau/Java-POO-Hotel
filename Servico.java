@@ -1,3 +1,9 @@
+//  * Classe Servico - Demonstra:
+//  * 1. IMPLEMENTAÇÃO DE INTERFACE: Implementa Cobravel
+//  * 2. ENCAPSULAMENTO: Atributos privados com acesso controlado
+//  * 3. COESÃO: Classe com responsabilidade única (representar um serviço)
+//  * 4. POLIMORFISMO: Implementa calcularValor() da interface Cobravel
+
 public class Servico implements Cobravel {
     private String nome;
     private double preco;

@@ -1,6 +1,13 @@
 import java.util.Calendar;
 import java.util.Date;
 
+//  * Classe App - Demonstra:
+//  * 1. CLIENTE DO SISTEMA: Utiliza as classes do domínio para compor uma aplicação
+//  * 2. INSTANCIAÇÃO DE OBJETOS: Cria e conecta objetos do domínio
+//  * 3. COMPOSIÇÃO DE COMPORTAMENTOS: Orquestra diferentes componentes do sistema
+//  * 4. PROGRAMAÇÃO PARA INTERFACES: Utiliza abstrações ao invés de implementações específicas
+//  * 5. MÉTODOS UTILITÁRIOS: Como criarData() para encapsular funcionalidade reutilizável
+
 public class App {
     public static void main(String[] args) {
         // Criar o hotel

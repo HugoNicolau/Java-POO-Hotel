@@ -1,3 +1,9 @@
+//  * Classe abstrata Pessoa - Demonstra:
+//  * 1. ABSTRAÇÃO: Representa o conceito genérico de uma pessoa no sistema
+//  * 2. ENCAPSULAMENTO: Atributos privados com getters/setters
+//  * 3. MÉTODOS ABSTRATOS: exibirInformacoes() para implementação obrigatória nas subclasses
+//  * 4. COMPOSIÇÃO DE COMPORTAMENTO: Método toString() fornece representação padrão
+
 public abstract class Pessoa {
     private String nome;
     private String cpf;

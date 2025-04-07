@@ -1,3 +1,10 @@
+//  * Classe Hospede - Demonstra:
+//  * 1. HERANÇA: Estende a classe abstrata Pessoa
+//  * 2. POLIMORFISMO DE SOBRESCRITA: Implementa exibirInformacoes() da superclasse
+//  * 3. ENCAPSULAMENTO: Atributo email privado com getter/setter
+//  * 4. CONSTRUTORES ENCADEADOS: Usa super() para chamar construtor da classe pai
+//  * 5. POLIMORFISMO DE SOBRESCRITA: Sobrescreve toString() para representação específica
+
 public class Hospede extends Pessoa {
     private String email;
 
@@ -5,9 +12,11 @@ public class Hospede extends Pessoa {
         super(nome, cpf, telefone);
         this.email = email;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -27,5 +36,5 @@ public class Hospede extends Pessoa {
     public String toString() {
         return getNome() + " - " + getEmail();
     }
-    
+
 }

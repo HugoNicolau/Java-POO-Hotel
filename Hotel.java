@@ -3,6 +3,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+//  * Classe Hotel - Demonstra:
+//  * 1. AGREGAÇÃO: Contém listas de Hospedes, Quartos e Reservas
+//  * 2. FACADE: Fornece interface simplificada para operações complexas do sistema
+//  * 3. ALTO NÍVEL DE ABSTRAÇÃO: Trabalha com objetos de domínio de alto nível
+//  * 4. USO DE COLEÇÕES: ArrayList para gerenciar múltiplas entidades
+//  * 5. ENCAPSULAMENTO: Acesso controlado às coleções internas
+//  * 6. BAIXO ACOPLAMENTO: Depende de abstrações, não implementações
+
 public class Hotel {
     private String nome;
     private List<Hospede> hospedes;

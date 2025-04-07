@@ -1,3 +1,9 @@
+//  * Classe abstrata Quarto - Demonstra:
+//  * 1. ABSTRAÇÃO: Modelo genérico para todos os tipos de quartos
+//  * 2. ENCAPSULAMENTO: Atributos privados com acesso controlado
+//  * 3. MÉTODOS ABSTRATOS: getDescricao() deve ser implementado pelas subclasses
+//  * 4. POLIMORFISMO: Diferentes implementações nos subtipos (QuartoSimples/QuartoLuxo)
+
 public abstract class Quarto {
     protected int numero;
     protected int capacidade;

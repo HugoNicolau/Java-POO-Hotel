@@ -3,6 +3,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+//  * Classe Reserva - Demonstra:
+//  * 1. IMPLEMENTAÇÃO DE INTERFACE: Implementa Cobravel
+//  * 2. COMPOSIÇÃO: Contém referências a Hospede, Quarto e lista de Servicos
+//  * 3. ENCAPSULAMENTO: Atributos privados com acesso controlado
+//  * 4. COESÃO: Classe com responsabilidade específica (gerenciar reserva)
+//  * 5. USO DE COLEÇÕES: ArrayList para gerenciar múltiplos serviços
+//  * 6. ATRIBUTO DE CLASSE (STATIC): Contador de IDs para garantir unicidade
+
 public class Reserva implements Cobravel {
     private static int contadorIds = 1;
 
