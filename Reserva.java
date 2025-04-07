@@ -4,14 +4,16 @@ import java.util.Date;
 import java.util.List;
 
 public class Reserva implements Cobravel {
-    private static int contadorIds = 1; // atributo estático para gerar IDs únicos
+    private static int contadorIds = 1;
 
     private final int id;
-    private Hospede hospede; // associação com a classe Hospede
-    private Quarto quarto; // associação com a classe Quarto
+    private Hospede hospede;
+    private Quarto quarto;
     private Date dataEntrada;
     private Date dataSaida;
-    private final List<Servico> servicos; // composição: lista de serviços incluídos
+    private final List<Servico> servicos;
+
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public Reserva(Hospede hospede, Quarto quarto, Date dataEntrada, Date dataSaida) {
         if (dataSaida.before(dataEntrada)) {
@@ -78,33 +80,32 @@ public class Reserva implements Cobravel {
         return (int) (diff / (1000 * 60 * 60 * 24));
     }
 
-    public double calcularValorTotal() {
-        int dias = getNumeroDias();
-        double total = quarto.getPrecoPorNoite() * dias;
-
+    public double calcularValorServicos() {
+        double total = 0;
         for (Servico servico : servicos) {
             total += servico.isPorPessoa() ? servico.getPreco() * quarto.getCapacidade() : servico.getPreco();
         }
-
         return total;
     }
 
     @Override
     public double calcularValor() {
-        return calcularValorTotal();
+        return quarto.getPrecoPorNoite() * getNumeroDias() + calcularValorServicos();
     }
-
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     public String toString() {
+        StringBuilder servicosFormatados = new StringBuilder();
+        for (Servico s : servicos) {
+            servicosFormatados.append("- ").append(s).append("\n");
+        }
+
         return "Reserva #" + id +
                 "\nHóspede: " + hospede.getNome() +
                 "\nQuarto: " + quarto.getDescricao() +
                 "\nEntrada: " + sdf.format(dataEntrada) +
                 "\nSaída: " + sdf.format(dataSaida) +
-                "\nServiços: " + servicos +
-                "\nValor Total: R$" + String.format("%.2f", calcularValorTotal());
+                "\nServiços:\n" + servicosFormatados.toString().trim() +
+                "\nValor Total: R$" + String.format("%.2f", calcularValor());
     }
-
 }
