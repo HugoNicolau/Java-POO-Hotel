@@ -1,3 +1,4 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -7,12 +8,15 @@ public class Reserva implements Cobravel {
 
     private final int id;
     private Hospede hospede; // associação com a classe Hospede
-    private Quarto quarto;   // associação com a classe Quarto
+    private Quarto quarto; // associação com a classe Quarto
     private Date dataEntrada;
     private Date dataSaida;
     private final List<Servico> servicos; // composição: lista de serviços incluídos
 
     public Reserva(Hospede hospede, Quarto quarto, Date dataEntrada, Date dataSaida) {
+        if (dataSaida.before(dataEntrada)) {
+            throw new IllegalArgumentException("Data de saída não pode ser antes da data de entrada.");
+        }
         this.id = contadorIds++;
         this.hospede = hospede;
         this.quarto = quarto;
@@ -90,14 +94,17 @@ public class Reserva implements Cobravel {
         return calcularValorTotal();
     }
 
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
     @Override
     public String toString() {
         return "Reserva #" + id +
-               "\nHóspede: " + hospede.getNome() +
-               "\nQuarto: " + quarto.getDescricao() +
-               "\nEntrada: " + dataEntrada +
-               "\nSaída: " + dataSaida +
-               "\nServiços: " + servicos +
-               "\nValor Total: R$" + calcularValorTotal();
+                "\nHóspede: " + hospede.getNome() +
+                "\nQuarto: " + quarto.getDescricao() +
+                "\nEntrada: " + sdf.format(dataEntrada) +
+                "\nSaída: " + sdf.format(dataSaida) +
+                "\nServiços: " + servicos +
+                "\nValor Total: R$" + String.format("%.2f", calcularValorTotal());
     }
+
 }
