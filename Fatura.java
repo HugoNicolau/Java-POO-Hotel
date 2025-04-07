@@ -25,10 +25,21 @@ public class Fatura {
     public void imprimirFatura() {
         System.out.println("FATURA - Titular: " + titular);
         System.out.println("---------------------------------");
+
+        // Separar reservas e serviços
         for (Cobravel item : itens) {
-            System.out.println(item); // vai chamar o toString() de Reserva ou Servico
+            if (item instanceof Reserva) {
+                System.out.println(item);
+            }
         }
+        for (Cobravel item : itens) {
+            if (item instanceof Servico) {
+                System.out.println(item);
+            }
+        }
+
         System.out.println("---------------------------------");
         System.out.printf("TOTAL: R$ %.2f%n", calcularTotal());
     }
+
 }
