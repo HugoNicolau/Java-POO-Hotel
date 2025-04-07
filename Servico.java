@@ -1,4 +1,4 @@
-public class Servico implements Cobravel {
+public class Servico {
     private String nome;
     private double preco;
     private boolean porPessoa;
@@ -13,20 +13,20 @@ public class Servico implements Cobravel {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public double getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-
     public boolean isPorPessoa() {
         return porPessoa;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 
     public void setPorPessoa(boolean porPessoa) {
@@ -34,13 +34,8 @@ public class Servico implements Cobravel {
     }
 
     @Override
-    public double calcularValor() {
-        return preco;
-    }
-
-    @Override
     public String toString() {
-        return nome + " (R$ " + String.format("%.2f", preco) +
-                (porPessoa ? " por pessoa" : " fixo") + ")";
+        return nome + " - R$" + String.format("%.2f", preco) +
+                (porPessoa ? " (por pessoa)" : "");
     }
 }
