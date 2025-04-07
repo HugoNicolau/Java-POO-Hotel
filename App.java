@@ -18,17 +18,12 @@ public class App {
         hotel.cadastrarQuarto(quartoSimples);
         hotel.cadastrarQuarto(quartoLuxo);
 
-        // Criar datas
-        Calendar cal = Calendar.getInstance();
-        cal.set(2025, Calendar.APRIL, 10);
-        Date entrada1 = cal.getTime();
-        cal.set(2025, Calendar.APRIL, 13);
-        Date saida1 = cal.getTime();
+        // Criar datas para as reservas
+        Date entrada1 = criarData(2025, Calendar.APRIL, 10);
+        Date saida1 = criarData(2025, Calendar.APRIL, 13);
 
-        cal.set(2025, Calendar.APRIL, 15);
-        Date entrada2 = cal.getTime();
-        cal.set(2025, Calendar.APRIL, 18);
-        Date saida2 = cal.getTime();
+        Date entrada2 = criarData(2025, Calendar.APRIL, 15);
+        Date saida2 = criarData(2025, Calendar.APRIL, 18);
 
         // Fazer reservas
         Reserva reservaJoao = hotel.fazerReserva(joao, quartoSimples, entrada1, saida1);
@@ -38,6 +33,7 @@ public class App {
         Servico cafe = new Servico("Café da manhã", 20.0, true);
         Servico estacionamento = new Servico("Estacionamento", 30.0, false);
         Servico spa = new Servico("Spa", 100.0, false);
+        Servico lavanderia = new Servico("Lavanderia", 50.0, false);
 
         reservaJoao.adicionarServico(cafe);
         reservaJoao.adicionarServico(estacionamento);
@@ -48,7 +44,7 @@ public class App {
         // Criar faturas
         Fatura faturaJoao = new Fatura(joao.getNome());
         faturaJoao.adicionarItem(reservaJoao);
-        faturaJoao.adicionarItem(new Servico("Lavanderia", 50.0, false)); // avulso
+        faturaJoao.adicionarItem(lavanderia); // serviço avulso
 
         Fatura faturaMaria = new Fatura(maria.getNome());
         faturaMaria.adicionarItem(reservaMaria);
@@ -59,5 +55,12 @@ public class App {
 
         System.out.println("\n--- Fatura Maria ---");
         faturaMaria.imprimirFatura();
+    }
+
+    private static Date criarData(int ano, int mes, int dia) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(ano, mes, dia, 0, 0, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal.getTime();
     }
 }
