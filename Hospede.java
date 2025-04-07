@@ -22,5 +22,10 @@ public class Hospede extends Pessoa {
         System.out.println("Email: " + getEmail());
         System.out.println("------------------------------");
     }
+
+    @Override
+    public String toString() {
+        return getNome() + " - " + getEmail();
+    }
     
 }
