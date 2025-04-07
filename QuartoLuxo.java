@@ -5,7 +5,7 @@ public class QuartoLuxo extends Quarto {
     private boolean possuiVaranda;
 
     public QuartoLuxo(int numero, int capacidade, double precoPorNoite, String tipoCama,
-                      boolean possuiJacuzzi, boolean incluiCafeDaManha, boolean possuiVaranda) {
+            boolean possuiJacuzzi, boolean incluiCafeDaManha, boolean possuiVaranda) {
         super(numero, capacidade, precoPorNoite);
         this.tipoCama = tipoCama;
         this.possuiJacuzzi = possuiJacuzzi;
@@ -47,12 +47,17 @@ public class QuartoLuxo extends Quarto {
 
     @Override
     public String getDescricao() {
-        return "Quarto Luxo: " + numero +
-               ", Capacidade: " + capacidade +
-               ", Preço por Noite: R$" + precoPorNoite +
-               ", Tipo de Cama: " + tipoCama +
-               ", Jacuzzi: " + (possuiJacuzzi ? "Sim" : "Não") +
-               ", Café da Manhã: " + (incluiCafeDaManha ? "Sim" : "Não") +
-               ", Varanda: " + (possuiVaranda ? "Sim" : "Não");
+        return "Quarto Luxo: " + getNumero() +
+                ", Capacidade: " + getCapacidade() +
+                ", Preço por Noite: R$" + getPrecoPorNoite() +
+                ", Tipo de Cama: " + tipoCama +
+                ", Jacuzzi: " + (possuiJacuzzi ? "Sim" : "Não") +
+                ", Café da Manhã: " + (incluiCafeDaManha ? "Sim" : "Não") +
+                ", Varanda: " + (possuiVaranda ? "Sim" : "Não");
+    }
+
+    @Override
+    public String toString() {
+        return getDescricao();
     }
 }

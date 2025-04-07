@@ -24,6 +24,18 @@ public class Hotel {
         quartos.add(quarto);
     }
 
+    public List<Hospede> getHospedes() {
+        return List.copyOf(hospedes);
+    }
+
+    public List<Quarto> getQuartos() {
+        return List.copyOf(quartos);
+    }
+
+    public List<Reserva> getReservas() {
+        return List.copyOf(reservas);
+    }
+
     public void listarHospedes() {
         for (Hospede h : hospedes) {
             System.out.println(h);
@@ -42,7 +54,20 @@ public class Hotel {
         }
     }
 
+    public boolean quartoDisponivel(Quarto quarto, Date entrada, Date saida) {
+        for (Reserva r : reservas) {
+            if (r.getQuarto().equals(quarto) &&
+                !(saida.before(r.getDataEntrada()) || entrada.after(r.getDataSaida()))) {
+                return false; // sobreposição de datas
+            }
+        }
+        return true;
+    }
+
     public Reserva fazerReserva(Hospede hospede, Quarto quarto, Date entrada, Date saida) {
+        if (!quartoDisponivel(quarto, entrada, saida)) {
+            throw new IllegalArgumentException("Quarto já reservado nesse período.");
+        }
         Reserva reserva = new Reserva(hospede, quarto, entrada, saida);
         reservas.add(reserva);
         return reserva;
