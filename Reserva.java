@@ -77,7 +77,8 @@ public class Reserva implements Cobravel {
 
     public int getNumeroDias() {
         long diff = dataSaida.getTime() - dataEntrada.getTime();
-        return (int) (diff / (1000 * 60 * 60 * 24));
+        int dias = (int) (diff / (1000 * 60 * 60 * 24));
+        return dias == 0 ? 1 : dias; // considera mínimo de 1 diária
     }
 
     public double calcularValorServicos() {
@@ -88,9 +89,13 @@ public class Reserva implements Cobravel {
         return total;
     }
 
+    public double calcularValorTotal() {
+        return quarto.getPrecoPorNoite() * getNumeroDias() + calcularValorServicos();
+    }
+
     @Override
     public double calcularValor() {
-        return quarto.getPrecoPorNoite() * getNumeroDias() + calcularValorServicos();
+        return calcularValorTotal();
     }
 
     @Override
@@ -100,12 +105,16 @@ public class Reserva implements Cobravel {
             servicosFormatados.append("- ").append(s).append("\n");
         }
 
+        String servicosTexto = servicos.isEmpty()
+                ? "Nenhum serviço adicionado."
+                : servicos.stream().map(s -> "- " + s).reduce("", (a, b) -> a + b + "\n").trim();
+
         return "Reserva #" + id +
                 "\nHóspede: " + hospede.getNome() +
                 "\nQuarto: " + quarto.getDescricao() +
                 "\nEntrada: " + sdf.format(dataEntrada) +
                 "\nSaída: " + sdf.format(dataSaida) +
-                "\nServiços:\n" + servicosFormatados.toString().trim() +
+                "\nServiços:\n" + servicosTexto +
                 "\nValor Total: R$" + String.format("%.2f", calcularValor());
     }
 }

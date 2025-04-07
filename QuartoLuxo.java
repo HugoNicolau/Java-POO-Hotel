@@ -5,7 +5,7 @@ public class QuartoLuxo extends Quarto {
     private boolean possuiVaranda;
 
     public QuartoLuxo(int numero, int capacidade, double precoPorNoite, String tipoCama,
-            boolean possuiJacuzzi, boolean incluiCafeDaManha, boolean possuiVaranda) {
+                      boolean possuiJacuzzi, boolean incluiCafeDaManha, boolean possuiVaranda) {
         super(numero, capacidade, precoPorNoite);
         this.tipoCama = tipoCama;
         this.possuiJacuzzi = possuiJacuzzi;
@@ -47,17 +47,17 @@ public class QuartoLuxo extends Quarto {
 
     @Override
     public String getDescricao() {
-        return "Quarto Luxo: " + getNumero() +
-                ", Capacidade: " + getCapacidade() +
-                ", Preço por Noite: R$" + getPrecoPorNoite() +
-                ", Tipo de Cama: " + tipoCama +
-                ", Jacuzzi: " + (possuiJacuzzi ? "Sim" : "Não") +
-                ", Café da Manhã: " + (incluiCafeDaManha ? "Sim" : "Não") +
-                ", Varanda: " + (possuiVaranda ? "Sim" : "Não");
+        return "Quarto Luxo " + numero + " - " + capacidade + " pessoa(s), Cama: " + tipoCama;
     }
 
     @Override
     public String toString() {
-        return getDescricao();
+        return "Quarto Luxo #" + numero +
+                "\nCapacidade: " + capacidade +
+                "\nTipo de Cama: " + tipoCama +
+                "\nJacuzzi: " + (possuiJacuzzi ? "Sim" : "Não") +
+                "\nCafé da Manhã: " + (incluiCafeDaManha ? "Sim" : "Não") +
+                "\nVaranda: " + (possuiVaranda ? "Sim" : "Não") +
+                "\nPreço por Noite: R$" + String.format("%.2f", precoPorNoite);
     }
 }

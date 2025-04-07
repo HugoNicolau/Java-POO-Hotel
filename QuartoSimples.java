@@ -16,7 +16,14 @@ public class QuartoSimples extends Quarto {
 
     @Override
     public String getDescricao() {
-        return "Quarto Simples: " + numero + ", Capacidade: " + capacidade + ", Preço por Noite: " + precoPorNoite + ", Tipo de Cama: " + tipoCama;
+        return "Quarto Simples " + numero + " - " + capacidade + " pessoa(s), Cama: " + tipoCama;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Quarto Simples #" + numero +
+               "\nCapacidade: " + capacidade +
+               "\nTipo de Cama: " + tipoCama +
+               "\nPreço por Noite: R$" + String.format("%.2f", precoPorNoite);
+    }
 }

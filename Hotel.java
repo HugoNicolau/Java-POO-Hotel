@@ -37,27 +37,39 @@ public class Hotel {
     }
 
     public void listarHospedes() {
+        System.out.println("=== Lista de Hóspedes ===\n");
+        int i = 1;
         for (Hospede h : hospedes) {
-            System.out.println(h);
+            System.out.println("Hóspede " + i + ":");
+            h.exibirInformacoes();
+            i++;
         }
     }
 
     public void listarQuartos() {
+        System.out.println("=== Quartos Disponíveis ===\n");
+        int i = 1;
         for (Quarto q : quartos) {
-            System.out.println(q.getDescricao());
+            System.out.println("Quarto " + i + ":\n" + q);
+            System.out.println("-----------------------------");
+            i++;
         }
     }
 
     public void listarReservas() {
+        System.out.println("=== Reservas Realizadas ===\n");
+        int i = 1;
         for (Reserva r : reservas) {
-            System.out.println(r);
+            System.out.println("Reserva " + i + ":\n" + r);
+            System.out.println("------------------------------");
+            i++;
         }
     }
 
     public boolean quartoDisponivel(Quarto quarto, Date entrada, Date saida) {
         for (Reserva r : reservas) {
             if (r.getQuarto().equals(quarto) &&
-                !(saida.before(r.getDataEntrada()) || entrada.after(r.getDataSaida()))) {
+                    !(saida.before(r.getDataEntrada()) || entrada.after(r.getDataSaida()))) {
                 return false; // sobreposição de datas
             }
         }
